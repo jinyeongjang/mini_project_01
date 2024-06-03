@@ -1,0 +1,40 @@
+body {
+    margin-left: 10px;
+}
+
+.home-link button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px solid black;
+    color: black;
+}
+
+.detail-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img-box {
+    width: 50%;
+    height: auto;
+}
+
+.detail__info {
+    padding: 30px 10px;
+    width: 50%;
+}
+
+.detail__genre {
+    padding: 15px 0px;
+}
+
+@media screen and (max-width: 767px) {
+    .img-box {
+        width: 100%;
+    }
+    .detail__info {
+        width: 100%;
+    }
+}
