@@ -1,19 +1,20 @@
 import './App.css';
-import movieData from './public/movieDetailData.json';
+import movieData from './public/movieListData.json';
 import MovieCard from './components/MovieCard';
 
 function App() {
     const movies = movieData.results;
+    console.log(movieData);
+    console.log(movies);
 
     return (
         <div className="container">
-            {movies.map((movie) => {
-                return (
-                    <ul>
-                        <MovieCard movie={movie} />
-                    </ul>
-                );
-            })}
+            <ul>
+                {movies.map((movie) => (
+                    // eslint-disable-next-line react/jsx-key
+                    <MovieCard movie={movie} />
+                ))}
+            </ul>
         </div>
     );
 }

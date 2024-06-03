@@ -18,7 +18,7 @@ const MovieDetail = () => {
             <div className="detail__info">
                 <div className="detail__head">
                     <h2>{detail.title}</h2>
-                    <p>⭐️ {detail.vote_average}</p>
+                    <p>평점: {detail.vote_average}</p>
                 </div>
                 <div className="detail__genre">
                     {detail.genres.map((genre) => (
@@ -26,12 +26,12 @@ const MovieDetail = () => {
                     ))}
                 </div>
                 <div className="detail__overview">
-                    <h3>Overview</h3>
+                    <h3>줄거리</h3>
                     <p>{detail.overview}</p>
                 </div>
                 <div className="detail__buttons">
                     <button className="detail__button" onClick={handleGoHome}>
-                        Go Back
+                        이전으로
                     </button>
                 </div>
             </div>

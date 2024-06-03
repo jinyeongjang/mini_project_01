@@ -1,0 +1,30 @@
+.slider {
+    width: 100vh;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+}
+
+.slide img {
+    width: 100vw;
+    object-fit: cover;
+}
+
+.slide h3 {
+    position: absolute;
+    bottom: 50px;
+    padding-left: 30px;
+}
+.left-btn {
+    position: absolute;
+    padding: 5px 10px;
+    top: 50%;
+}
+
+.right-btn {
+    position: absolute;
+    padding: 5px 10px;
+    top: 50%;
+}
