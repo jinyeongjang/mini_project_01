@@ -8,9 +8,9 @@ const MovieDetail = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // 비동기 데이터 로드 시뮬레이션 (필요 시 실제 API 호출로 대체 가능)
+        // 비동기 데이터 로드 시뮬레이션
         const fetchData = async () => {
-            // 데이터를 로드하고 상태에 설정
+            // 데이터를 로드 및 상태에 설정하기.
             setDetail(movieDetailData);
         };
 
@@ -22,7 +22,7 @@ const MovieDetail = () => {
     };
 
     if (!detail) {
-        return <div>Loading...</div>;
+        return <div>불러오는 중...</div>;
     }
 
     return (
