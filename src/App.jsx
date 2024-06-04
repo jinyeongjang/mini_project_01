@@ -1,22 +1,22 @@
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import movieData from './public/movieListData.json';
-import MovieCard from './components/MovieCard';
+import NavBar from './components/Navbar';
+
 
 function App() {
-    const movies = movieData.results;
-    console.log(movieData);
-    console.log(movies);
-
     return (
-        <div className="container">
-            <ul>
-                {movies.map((movie) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <MovieCard movie={movie} />
-                ))}
-            </ul>
-        </div>
-    );
+        <div className="App">
+        <header>
+            <NavBar />
+        </header>
+            
+            <Outlet />
+            <main>
+      </main>
+    </div>
+  );
 }
+
 
 export default App;

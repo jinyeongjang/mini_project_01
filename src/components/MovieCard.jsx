@@ -3,12 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
     const navigate = useNavigate();
-    const handleClick = (e) => {
-        e.preventDefault();
 
-        navigate('movie_detail');
+    const handleClick = () => {
+        navigate(`/movie/${movie.id}`);
     };
-    console.log(movie);
+
     return (
         <li key={movie.id} onClick={handleClick} className="card-box">
             <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt={movie.title} />

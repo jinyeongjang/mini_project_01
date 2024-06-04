@@ -6,7 +6,7 @@ const MovieBanner = () => {
     const movies = movieData.results;
     const navigate = useNavigate();
     const handleClick = (e) => {
-        navigate('/movie_detail');
+        navigate('/movie_Detail');
     };
     const movePrev = (e) => {
         e.preventDefault();
