@@ -1,14 +1,29 @@
 import './MovieDetail.css';
 import movieDetailData from '../public/movieDetailData.json';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const MovieDetail = () => {
-    const detail = movieDetailData;
+    const [detail, setDetail] = useState(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // 비동기 데이터 로드 시뮬레이션 (필요 시 실제 API 호출로 대체 가능)
+        const fetchData = async () => {
+            // 데이터를 로드하고 상태에 설정
+            setDetail(movieDetailData);
+        };
+
+        fetchData();
+    }, []);
 
     const handleGoHome = (e) => {
         navigate('/');
     };
+
+    if (!detail) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="detail-container">
