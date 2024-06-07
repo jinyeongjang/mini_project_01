@@ -6,6 +6,7 @@ import MovieDetail from './components/MovieDetail.jsx';
 import MovieList from './components/MovieList.jsx';
 import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
+import SearchPage from './components/SearchPage.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
@@ -15,10 +16,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path="movie/:id" element={<MovieDetail />} />
                 <Route path="Signup" element={<Signup />} />
                 <Route path="login" element={<Login />} />
+                <Route path="search" element={<SearchPage />} />
             </Route>
         </Routes>
     </BrowserRouter>
 );
-
 
 export default App;

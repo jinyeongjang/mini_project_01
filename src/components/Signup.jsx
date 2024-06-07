@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Signup.css';
 
 const Signup = () => {
@@ -37,7 +37,14 @@ const Signup = () => {
                     <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="비밀번호" />
                 </div>
                 <div className="form-group">
-                    <input type="password" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required placeholder="비밀번호 한번 더 입력" />
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                        placeholder="비밀번호 한번 더 입력"
+                    />
                 </div>
                 {passwordError && <div className="error">{passwordError}</div>}
                 <button type="submit" className="signup-button">

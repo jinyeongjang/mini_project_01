@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import axios from '../api/axios';
 
@@ -8,7 +8,6 @@ const MovieList = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-
                 // axios 가져오기 - movie/popular 카테고리 가져오기.
                 const response = await axios.get('movie/popular');
                 setMovies(response.data.results);
