@@ -1,11 +1,15 @@
+main {
+    margin-top: 20px;
+}
+
 .detail-container {
     display: flex;
-    flex-wrap: wrap;
     width: 80%;
     margin: 0 auto;
     height: 100%;
     position: relative;
     transition: 0.25s;
+    margin-top: 20px; /* main 요소의 margin-top을 이동하여 detail-container에 적용 */
 }
 
 .detail-container p {
@@ -16,13 +20,29 @@
     width: 50%;
     height: 100%;
     position: relative;
+    animation: scaleBackground 3s ease-in-out; /* 애니메이션 적용 */
+}
+
+@keyframes scaleBackground {
+    0% {
+        background-size: 110%;
+        background-position-x: 0px;
+        background-position-y: 0px;
+    }
+    100% {
+        background-size: 100%;
+        background-position-x: 0;
+        background-position-y: 0;
+    }
 }
 
 .detail__img {
-    width: 80%;
-    height: 100%;
+    width: 80%; /* 이미지의 너비를 100%로 변경 */
+    height: auto; /* 이미지의 높이를 자동으로 설정 */
     border-radius: 12px;
     object-fit: cover;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+    animation: scaleBackground 3s ease-in-out; /* 애니메이션 적용 */
     animation: fadeIn 0.25s ease-in-out forwards;
     opacity: 0;
 }
@@ -36,15 +56,6 @@
     opacity: 0;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 .detail__head {
     display: flex;
     justify-content: space-between;
@@ -52,7 +63,8 @@
     padding-right: 20px;
     margin: 20px 0;
 }
-.detail__head h2 {
+.detail__head h1 {
+    /* h2에서 h1로 수정 */
     color: white;
     font-size: 70px;
 }
@@ -73,22 +85,22 @@
 .detail__overview {
     padding: 70px 0;
     font-style: normal;
-    font-color: rgb(255, 255, 255);
-    text-align: justify;
+    text-align: justify; /* font-color 삭제, 정렬 속성 변경 */
     font-size: 1.3rem;
     letter-spacing: -2px;
     line-height: 30px;
+    color: rgb(255, 255, 255); /* 폰트 색상 변경 */
 }
 
 .detail__button {
     background-color: bisque;
     margin: 10px 10px;
-
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
     border-radius: 12px;
     width: 100px;
     height: 50px;
     margin-top: 10px;
-    margin-bottom: 10pxs;
+    margin-bottom: 10pxs; /* 오타 수정 */
     color: rgb(0, 0, 0);
     border: none;
     transition: 0.25s;
@@ -108,19 +120,35 @@
     transform: scale(1);
 }
 
-.home-link {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-.home-link button {
-    padding: 10px 20px;
-    font-size: 20px;
-    background-color: transparent;
+.play-btn {
+    background-color: bisque;
+    margin: 10px 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+    border-radius: 12px;
+    width: 100px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10pxs; /* 오타 수정 */
+    color: rgb(0, 0, 0);
+    border: none;
     cursor: pointer;
-    border: 2px solid rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
+    transition: 0.25s;
 }
+
+.play-btn:hover {
+    background-color: rgb(128, 109, 86);
+    color: rgb(255, 255, 255);
+    transition: transform 0.25s ease-in-out;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.play-btn:active {
+    background-color: rgb(78, 63, 44);
+    transition: transform 0.25s ease-in-out;
+    transform: scale(1);
+}
+
 @media (max-width: 1024px) {
     .detail-container {
         flex-wrap: wrap;
@@ -186,4 +214,8 @@
         margin-left: 0;
         margin-top: 1rem;
     }
+}
+/* Hide horizontal scrollbar */
+body {
+    overflow-x: hidden;
 }

@@ -1,21 +1,23 @@
 import { Outlet } from 'react-router-dom';
-import './App.css';
 import NavBar from './components/Navbar';
-
+import MovieBanner from './components/MovieBanner';
+import FooterPage from './components/FooterPage';
 
 function App() {
     return (
         <div className="App">
-        <header>
-            <NavBar />
-        </header>
-            
-            <Outlet />
+            <header>
+                <NavBar />
+            </header>
+            <banner>
+                <MovieBanner />
+            </banner>
             <main>
-      </main>
-    </div>
-  );
+                <Outlet />
+                <FooterPage />
+            </main>
+        </div>
+    );
 }
-
 
 export default App;

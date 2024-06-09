@@ -1,4 +1,5 @@
 .card-box {
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -30,84 +31,34 @@
 }
 
 .card-box img {
-    min-width: 70%;
-    max-height: 80%;
+    max-height: 75%;
     object-fit: cover;
     border-radius: 30px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+}
+
+.card-box:hover img {
+    animation: scaleBackground 3s ease-in-out; /* hover 시에만 애니메이션 적용 */
+}
+
+@keyframes scaleBackground {
+    0% {
+        background-size: 110%;
+        background-position-x: 0px;
+        background-position-y: 0px;
+    }
+    100% {
+        background-size: 100%;
+        background-position-x: 0;
+        background-position-y: 0;
+    }
 }
 
 .card-box p {
-    color: gray;
+    color: rgb(255, 255, 255);
     font-weight: 500;
 }
 
 h3 {
     color: white;
-}
-
-@media (max-width: 1024px) {
-    .detail-container {
-        flex-wrap: wrap;
-    }
-    .img-box {
-        width: 100%;
-        height: auto;
-    }
-    .detail__info {
-        padding: 30px 10px;
-        width: 100%;
-    }
-    .detail__genre {
-        padding: 15px 0px;
-    }
-}
-
-@media (max-width: 768px) {
-    .search-container {
-        flex-direction: row;
-    }
-
-    h1 {
-        display: flex;
-        font-size: 50px;
-    }
-
-    .navbar {
-        flex-direction: column;
-        height: auto;
-        padding: 3rem;
-    }
-
-    .navbar-left {
-        margin-right: 0;
-        margin-bottom: 1rem;
-    }
-
-    .navbar-title {
-        margin-right: 1px;
-        font-size: 1rem;
-    }
-
-    .navbar-links {
-        flex-direction: row;
-        gap: 5px;
-    }
-
-    .search-input {
-        width: 100%;
-        max-width: 175px;
-    }
-
-    .search-button {
-        width: 50px;
-    }
-
-    .detail__button {
-        width: 50%;
-    }
-
-    .switch {
-        margin-left: 0;
-        margin-top: 1rem;
-    }
 }

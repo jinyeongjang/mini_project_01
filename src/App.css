@@ -1,10 +1,24 @@
-.container {
-    display: flex;
-    justify-content: center;
+* {
+    box-sizing: border-box;
+    margin: 0;
 }
 
-.container ul {
+.App {
+    background: rgb(81, 83, 74);
+}
+
+main {
+    background: rgb(81, 83, 74);
+}
+
+main.container {
+    background: rgb(81, 83, 74);
     justify-content: center;
+    margin: 20px;
     flex-wrap: wrap;
     display: flex;
+}
+
+.detail-container {
+    background: rgb(81, 83, 74);
 }

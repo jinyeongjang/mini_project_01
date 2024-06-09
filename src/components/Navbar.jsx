@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import '../App.css';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // useLocation import 제거
 import './Navbar.css';
+
 import logo from '../public/images/logo.png';
 
 const NavBar = () => {
