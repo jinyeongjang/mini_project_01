@@ -7,7 +7,6 @@ import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
 import SearchPage from './components/SearchPage.jsx';
 import MovieBanner from './components/MovieBanner.jsx';
-import FooterPage from './components/FooterPage.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
@@ -18,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path="signup" element={<Signup />} />
                 <Route path="login" element={<Login />} />
                 <Route path="search" element={<SearchPage />} />
+                <Route path="banner" element={<MovieBanner />} />
             </Route>
         </Routes>
     </BrowserRouter>

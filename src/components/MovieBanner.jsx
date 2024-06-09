@@ -45,13 +45,6 @@ const MovieBanner = () => {
         }
     };
 
-    const handleClick = () => {
-        if (movie.id) {
-            // movie 객체가 비어 있지 않은 경우에만 이동
-            window.location.href = `/movie/${movie.id}`;
-        }
-    };
-
     // Display vote average with two decimal places
     const voteAverage = movie.vote_average ? movie.vote_average.toFixed(2) : '';
 
@@ -61,7 +54,7 @@ const MovieBanner = () => {
     return (
         <Link to={movie.id ? `/movie/${movie.id}` : '/'} className="movie-banner-link">
             <div className="movie-banner" style={{ backgroundImage: `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")` }}>
-                <div className="movie-banner-overlay" onClick={handleClick}>
+                <div className="movie-banner-overlay">
                     <div className="movie-banner-content">
                         <div className="movie-banner-title">
                             <h1>{movie.title}</h1>

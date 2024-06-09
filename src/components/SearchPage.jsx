@@ -3,7 +3,7 @@ import './SearchPage.css';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from '../api/axios.js';
-import useDebounce from '../hooks/useDebounce.js'; // 디바운스 훅 import 추가
+import useDebounce from '../hooks/useDebounce.js';
 
 const SearchPage = () => {
     const location = useLocation();
@@ -14,17 +14,21 @@ const SearchPage = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    const debouncedSearchTerm = useDebounce(searchTerm, 500); // 500ms 디바운스
+    const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
     useEffect(() => {
         const fetchSearchMovies = async () => {
-            if (!debouncedSearchTerm) return; // 디바운스된 검색어가 없으면 종료
+            if (!debouncedSearchTerm) {
+                setLoading(false);
+                return;
+            }
+
+            setLoading(true);
 
             try {
                 const response = await axios.get(`/search/movie?include_adult=false&query=${debouncedSearchTerm}`);
                 const movies = response.data.results;
 
-                // 각 영화의 상세 정보를 가져오기
                 const detailedMovies = await Promise.all(
                     movies.map(async (movie) => {
                         const detailResponse = await axios.get(`/movie/${movie.id}`);
@@ -46,7 +50,9 @@ const SearchPage = () => {
     return (
         <div>
             {loading ? (
-                <p>Loading...</p>
+                <div className="loading-container">
+                    <div className="spinner"></div>
+                </div>
             ) : (
                 <div>
                     {searchResults.length > 0 ? (
