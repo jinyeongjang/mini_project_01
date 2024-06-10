@@ -76,7 +76,7 @@ const MovieDetail = () => {
                 {videoKey && (
                     <div className="detail__video">
                         <button className="play-btn" onClick={handlePlayVideo}>
-                            영상 재생
+                            예고편 영상 재생
                         </button>
                     </div>
                 )}

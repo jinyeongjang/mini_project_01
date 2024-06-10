@@ -63,3 +63,13 @@
 h3 {
     color: white;
 }
+
+@media screen and (max-width: 768px) {
+    .card-box {
+        width: 100%;
+    }
+
+    .card-box img {
+        max-height: 63%;
+    }
+}
