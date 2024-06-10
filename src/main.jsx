@@ -13,11 +13,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes>
             <Route path="/" element={<App />}>
                 <Route index element={<MovieList />} />
-                <Route path="movie/:id" element={<MovieDetail />} />
-                <Route path="signup" element={<SignupPage />} />
-                <Route path="login" element={<LoginPage />} />
-                <Route path="search" element={<SearchPage />} />
-                <Route path="banner" element={<MovieBanner />} />
+                <Route path="/movie/:id" element={<MovieDetail />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/search" element={<SearchPage />} />
+                <Route path="/banner" element={<MovieBanner />} />
             </Route>
         </Routes>
     </BrowserRouter>
