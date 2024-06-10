@@ -1,15 +1,28 @@
-import '../App.css';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // useLocation import 제거
+import { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './Navbar.css';
+import { auth } from '../../firebase.js';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 import logo from '../public/images/logo.png';
 
 const NavBar = () => {
     const [searchValue, setSearchValue] = useState('');
-    const navigate = useNavigate();
     const [darkMode, setDarkMode] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [user, setUser] = useState(null);
+    const [showMenu, setShowMenu] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+
+        return () => {
+            unsubscribe();
+        };
+    }, []);
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -21,12 +34,17 @@ const NavBar = () => {
         }
     };
 
-    const toggleTheme = () => {
-        setDarkMode(!darkMode);
-    };
-
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    };
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            alert('로그아웃되었습니다');
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
@@ -52,15 +70,25 @@ const NavBar = () => {
                     <a href="/Signup">회원가입</a>
                 </li>
                 <li>
-                    <a href="/Login">로그인</a>
+                    {user ? (
+                        <div className="user-info" onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)}>
+                            <img src={user.photoURL} alt={user.displayName} className="user-photo" onClick={() => setShowMenu(!showMenu)} />
+                            {showMenu && (
+                                <div className="dropdown-menu">
+                                    <Link to="/" className="menu-item">
+                                        마이 페이지(구현중)
+                                    </Link>
+                                    <button onClick={handleLogout} className="menu-item">
+                                        로그아웃
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <a href="/Login">로그인</a>
+                    )}
                 </li>
             </ul>
-            <div className="theme-toggle">
-                <label className="switch">
-                    <input type="checkbox" checked={darkMode} onChange={toggleTheme} />
-                    <span className="slider round"></span>
-                </label>
-            </div>
         </nav>
     );
 };

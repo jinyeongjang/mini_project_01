@@ -67,7 +67,8 @@ main {
 
 .detail__head h1 {
     color: white;
-    font-size: 70px;
+    letter-spacing: -2px;
+    font-size: 50px;
 }
 
 .detail__genre {

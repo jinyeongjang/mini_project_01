@@ -1,6 +1,8 @@
 import '../App.css';
 import './Signup.css';
 import { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase.js';
 
 const Signup = () => {
     const [username, setUsername] = useState('');
@@ -9,18 +11,22 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
             setPasswordError('비밀번호가 일치하지 않습니다.');
             return;
         }
         setPasswordError('');
-        // 회원가입 로직 추가
-        console.log('Username:', username);
-        console.log('Email:', email);
-        console.log('Password:', password);
-        // 회원가입 API 호출 등의 추가 작업 수행
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            console.log('회원가입 성공:', user);
+            alert('회원가입이 완료되었습니다!');
+        } catch (error) {
+            console.error('회원가입 실패:', error.message);
+        }
     };
 
     return (

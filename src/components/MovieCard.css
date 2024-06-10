@@ -22,11 +22,11 @@
     }
 }
 
-.card-box:hover {
+.card-box img:hover {
     transform: scale(1.1);
 }
 
-.card-box:active {
+.card-box img:active {
     transform: scale(1);
 }
 
@@ -35,10 +35,7 @@
     object-fit: cover;
     border-radius: 30px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
-}
-
-.card-box:hover img {
-    animation: scaleBackground 3s ease-in-out; /* hover 시에만 애니메이션 적용 */
+    transition: transform 0.25s ease-in-out;
 }
 
 @keyframes scaleBackground {

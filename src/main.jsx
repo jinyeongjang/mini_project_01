@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MovieDetail from './components/MovieDetail.jsx';
 import MovieList from './components/MovieList.jsx';
 import Signup from './components/Signup.jsx';
-import Login from './components/Login.jsx';
+import LoginPage from './components/LoginPage.jsx';
 import SearchPage from './components/SearchPage.jsx';
 import MovieBanner from './components/MovieBanner.jsx';
 
@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route index element={<MovieList />} />
                 <Route path="movie/:id" element={<MovieDetail />} />
                 <Route path="signup" element={<Signup />} />
-                <Route path="login" element={<Login />} />
+                <Route path="login" element={<LoginPage />} />
                 <Route path="search" element={<SearchPage />} />
                 <Route path="banner" element={<MovieBanner />} />
             </Route>
