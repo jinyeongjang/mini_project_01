@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import './LoginPage.css';
-import { auth } from '../../firebase.js';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth, googleProvider } from '../../firebase.js'; // firebase.js에서 auth 및 googleProvider 가져오기
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -24,6 +24,17 @@ const LoginForm = () => {
         }
     };
 
+    const handleGoogleLogin = async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider); // 구글 로그인 핸들러 수정
+            console.log(result.user);
+            alert('로그인되었습니다');
+            navigate('/');
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <div className="login-form-container">
             <form className="login-form" onSubmit={handleEmailLogin}>
@@ -37,6 +48,11 @@ const LoginForm = () => {
                 <button type="submit" className="login-button">
                     로그인
                 </button>
+                <div>
+                    <button type="button" className="google-login-button" onClick={handleGoogleLogin}>
+                        구글 로그인
+                    </button>
+                </div>
             </form>
         </div>
     );

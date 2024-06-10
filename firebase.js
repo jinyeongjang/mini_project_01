@@ -11,8 +11,11 @@ const firebaseConfig = {
     appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+// Firebase 앱 초기화
+const firebaseApp = initializeApp(firebaseConfig);
 
-export { auth, provider };
+// 인증 및 Google 프로바이더 설정
+const auth = getAuth(firebaseApp);
+const googleProvider = new GoogleAuthProvider();
+
+export { auth, googleProvider };

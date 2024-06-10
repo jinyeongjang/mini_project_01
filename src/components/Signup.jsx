@@ -58,6 +58,7 @@ const Signup = () => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                         placeholder="비밀번호 한번 더 입력"
+                        // minLength={6}
                     />
                 </div>
                 {passwordError && <div className="error">{passwordError}</div>}

@@ -4,7 +4,7 @@ import './Navbar.css';
 import { auth } from '../../firebase.js';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import logo from '../public/images/logo.png';
-import defaultUserAvatar from '../public/images/defaultUserAvatar.png'; // 기본 아바타 이미지
+import defaultUserAvatar from '../public/images/defaultUserAvatar.png';
 
 const NavBar = () => {
     const [searchValue, setSearchValue] = useState('');
