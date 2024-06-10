@@ -1,6 +1,7 @@
 import '../App.css';
 import './Signup.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase.js';
 
@@ -10,11 +11,16 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
             setPasswordError('비밀번호가 일치하지 않습니다.');
+            return;
+        }
+        if (password.length < 6) {
+            setPasswordError('비밀번호는 최소 6자리 이상이어야 합니다.');
             return;
         }
         setPasswordError('');
@@ -24,8 +30,9 @@ const Signup = () => {
             const user = userCredential.user;
             console.log('회원가입 성공:', user);
             alert('회원가입이 완료되었습니다!');
+            navigate('/'); // 홈으로 이동
         } catch (error) {
-            console.error('회원가입 실패:', error.message);
+            console.error('회원가입이 실패하였습니다.:', error.message);
         }
     };
 

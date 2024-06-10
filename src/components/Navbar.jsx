@@ -3,8 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import './Navbar.css';
 import { auth } from '../../firebase.js';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-
 import logo from '../public/images/logo.png';
+import defaultUserAvatar from '../public/images/defaultUserAvatar.png'; // 기본 아바타 이미지
 
 const NavBar = () => {
     const [searchValue, setSearchValue] = useState('');
@@ -66,13 +66,15 @@ const NavBar = () => {
                 <li>
                     <a href="/">홈</a>
                 </li>
-                <li>
-                    <a href="/Signup">회원가입</a>
-                </li>
+                {!user && (
+                    <li>
+                        <a href="/Signup">회원가입</a>
+                    </li>
+                )}
                 <li>
                     {user ? (
                         <div className="user-info" onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)}>
-                            <img src={user.photoURL} alt={user.displayName} className="user-photo" onClick={() => setShowMenu(!showMenu)} />
+                            <img src={user.photoURL || defaultUserAvatar} alt={user.displayName || '사용자'} className="user-photo" onClick={() => setShowMenu(!showMenu)} />
                             {showMenu && (
                                 <div className="dropdown-menu">
                                     <Link to="/" className="menu-item">
