@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #1c1c1c; /* 검은색 배경 */
+
     color: #fff; /* 흰색 텍스트 */
 }
 
@@ -44,15 +44,22 @@ input {
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-    background-color: #007bff;
+    background-color: #4f8c6d;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: transform 0.25s ease-in-out;
 }
 
 .signup-button:hover {
-    background-color: #0056b3;
+    background-color: rgb(78, 115, 159);
+    transform: scale(1.1);
+}
+
+.signup-button:active {
+    background-color: rgb(55, 75, 100);
+    transform: scale(1);
 }
 
 .error {
