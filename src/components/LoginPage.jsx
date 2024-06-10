@@ -9,9 +9,22 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [emailError, setEmailError] = useState('');
+
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    };
 
     const handleEmailLogin = async (e) => {
         e.preventDefault();
+
+        if (!validateEmail(email)) {
+            setEmailError('유효한 이메일 주소를 입력해주세요.');
+            return;
+        }
+        setEmailError('');
+
         try {
             const result = await signInWithEmailAndPassword(auth, email, password);
             const user = result.user;
@@ -41,6 +54,7 @@ const LoginForm = () => {
                 <h2>로그인</h2>
                 <div className="form-group">
                     <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="이메일" required />
+                    {emailError && <div className="error">{emailError}</div>}
                 </div>
                 <div className="form-group">
                     <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="비밀번호" required />

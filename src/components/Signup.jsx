@@ -11,10 +11,23 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [emailError, setEmailError] = useState('');
     const navigate = useNavigate();
+
+    const validateEmail = (email) => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateEmail(email)) {
+            setEmailError('유효한 이메일 주소를 입력해주세요.');
+            return;
+        }
+        setEmailError('');
+
         if (password !== confirmPassword) {
             setPasswordError('비밀번호가 일치하지 않습니다.');
             return;
@@ -33,6 +46,7 @@ const Signup = () => {
             navigate('/'); // 홈으로 이동
         } catch (error) {
             console.error('회원가입이 실패하였습니다.:', error.message);
+            alert('회원가입이 실패하였습니다: ' + error.message);
         }
     };
 
@@ -46,6 +60,7 @@ const Signup = () => {
 
                 <div className="form-group">
                     <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="이메일" />
+                    {emailError && <div className="error">{emailError}</div>}
                 </div>
                 <div className="form-group">
                     <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="비밀번호" />
@@ -58,7 +73,6 @@ const Signup = () => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                         placeholder="비밀번호 한번 더 입력"
-                        // minLength={6}
                     />
                 </div>
                 {passwordError && <div className="error">{passwordError}</div>}

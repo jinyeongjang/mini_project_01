@@ -5,6 +5,7 @@
     align-items: center;
     height: 100vh;
     margin: 0;
+    transition: transform 0.25s ease-in-out;
 }
 
 .login-form {
@@ -30,15 +31,17 @@
     cursor: pointer;
     font-size: 1rem;
     border-radius: 4px;
+    transition: transform 0.25s ease-in-out;
 }
 
 .login-button {
-    background-color: #4783a1; /* Green */
+    background-color: #4783a1;
     color: white;
+    transition: transform 0.25s ease-in-out;
 }
 
 .google-login-button {
-    background-color: #ad655d; /* Google Blue */
+    background-color: #ad655d;
     color: white;
     margin-top: 10px;
 }
@@ -46,7 +49,7 @@
 .login-button:hover,
 .google-login-button:hover {
     opacity: 0.8;
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 /* 폼 요소 스타일링 */
@@ -73,5 +76,9 @@
 }
 
 .login-form button:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+}
+
+.login-form button:active {
+    transform: scale(1);
 }

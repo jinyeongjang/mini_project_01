@@ -8,9 +8,9 @@ function App() {
         <div className="App">
             <header>
                 <NavBar />
-                <MovieBanner />
             </header>
             <main>
+                <MovieBanner />
                 <Outlet />
                 <FooterPage />
             </main>
