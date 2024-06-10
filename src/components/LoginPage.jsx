@@ -12,8 +12,8 @@ const LoginForm = () => {
     const [emailError, setEmailError] = useState('');
 
     const validateEmail = (email) => {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
     };
 
     const handleEmailLogin = async (e) => {
