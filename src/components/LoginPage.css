@@ -52,6 +52,14 @@
     transform: scale(1.1);
 }
 
+.login-form button:hover {
+    transform: scale(1.1);
+}
+
+.login-form button:active {
+    transform: scale(1);
+}
+
 /* 폼 요소 스타일링 */
 .form-group {
     position: relative;
@@ -73,12 +81,4 @@
     font-size: 1rem;
     color: #999;
     transition: all 0.3s;
-}
-
-.login-form button:hover {
-    transform: scale(1.1);
-}
-
-.login-form button:active {
-    transform: scale(1);
 }
