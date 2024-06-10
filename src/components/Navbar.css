@@ -44,14 +44,13 @@
     list-style: none;
     display: flex;
     margin-left: 40px;
-    align-items: right;
+    align-items: center;
     gap: 20px;
-    
     background-color: transparent;
 }
 
 .navbar-links li {
-
+    /* 내용 없음 */
 }
 
 .navbar-links a {
@@ -61,13 +60,11 @@
     text-decoration: none;
     cursor: pointer;
     transition: 0.25s;
-    
 }
 
 .navbar-links a:hover {
     border: none;
     background-color: rgb(111, 84, 52);
-    
 }
 
 .navbar-links a:active {
@@ -186,7 +183,6 @@
     background-color: #555; /* Darker background color on hover */
 }
 
-
 @media (max-width: 1024px) {
     .detail-container {
         flex-wrap: wrap;
@@ -247,3 +243,4 @@
     .detail__button {
         width: 50%;
     }
+}
