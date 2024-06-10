@@ -4,7 +4,7 @@ import '../App.css';
 const FooterPage = () => {
     return (
         <footer>
-            <p>this is a miniproject</p>
+            <p>this is a mini project</p>
             <div className="background"></div>
         </footer>
     );
