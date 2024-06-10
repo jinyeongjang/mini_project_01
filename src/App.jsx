@@ -8,10 +8,8 @@ function App() {
         <div className="App">
             <header>
                 <NavBar />
-            </header>
-            <banner>
                 <MovieBanner />
-            </banner>
+            </header>
             <main>
                 <Outlet />
                 <FooterPage />
