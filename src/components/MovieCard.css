@@ -42,6 +42,25 @@
     transition: transform 0.25s ease-in-out;
 }
 
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie-card {
+    width: 200px;
+    margin: 10px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
 @keyframes scaleBackground {
     0% {
         background-size: 110%;
