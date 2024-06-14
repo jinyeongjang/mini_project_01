@@ -19,10 +19,25 @@ const MovieCard = ({ movie }) => {
         return count.toLocaleString();
     };
 
+    // 타이틀을 두 줄로 나누기 위한 JSX
+    const renderTitle = () => {
+        if (movie.title.length > 20) {
+            const firstLine = movie.title.slice(0, 30);
+            const secondLine = movie.title.slice(100);
+            return (
+                <div className="title">
+                    <div>{firstLine}</div>
+                    <div>{secondLine}</div>
+                </div>
+            );
+        }
+        return <div className="title">{movie.title}</div>;
+    };
+
     return (
         <div onClick={handleClick} className="card-box">
             <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt={movie.title} />
-            <h3>{movie.title}</h3>
+            {renderTitle()}
             <p>
                 ⭐️ 평점: {calculateVoteAverage()}점 / 😀 관객 수: {addThousandSeparator(movie.popularity)}명
             </p>

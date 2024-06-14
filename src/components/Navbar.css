@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
 .navbar {
     display: flex;
     justify-content: center;
@@ -5,7 +10,7 @@
     height: 10rem;
     position: relative;
     padding: 1rem 2rem;
-    background: linear-gradient(to bottom, #7c7f70, #51534a);
+    background: linear-gradient(to bottom, rgb(42, 42, 45), rgb(24, 26, 35));
     color: white;
 }
 
@@ -47,10 +52,6 @@
     align-items: center;
     gap: 20px;
     background-color: transparent;
-}
-
-.navbar-links li {
-    /* 내용 없음 */
 }
 
 .navbar-links a {

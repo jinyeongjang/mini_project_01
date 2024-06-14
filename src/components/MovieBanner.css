@@ -1,8 +1,8 @@
 .movie-banner {
     position: relative;
     border-radius: 30px;
-    width: calc(100% - 170px);
-    height: 500px;
+    width: calc(100% - 100px);
+    height: 480px;
     margin: 0 auto;
     background-size: cover;
     overflow: hidden;

@@ -10,8 +10,11 @@ const MovieList = () => {
 
     const fetchPopularMovies = async () => {
         try {
-            const response = await axios.get('movie/popular');
-            setMovies(response.data.results);
+            const responses = await Promise.all([axios.get('movie/popular', { params: { page: 1 } }), axios.get('movie/popular', { params: { page: 2 } })]);
+            const moviesPage1 = responses[0].data.results;
+            const moviesPage2 = responses[1].data.results;
+            const allMovies = [...moviesPage1, ...moviesPage2];
+            setMovies(allMovies);
         } catch (error) {
             console.error('TMDB Api키를 찾을 수 없어요.', error);
         }
