@@ -1,54 +1,39 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './MovieBanner.css';
 
 const MovieBanner = () => {
     const [movie, setMovie] = useState({});
-    const [videoKey, setVideoKey] = useState('');
-    const videoRef = useRef(null);
     const location = useLocation();
 
     useEffect(() => {
         fetchData();
-
         return () => {
             setMovie({});
-            setVideoKey('');
         };
     }, [location]);
 
     const fetchData = async () => {
         try {
-            const request = await axios.get('https://api.themoviedb.org/3/movie/popular', {
-                params: {
-                    api_key: import.meta.env.VITE_TMDB_ACCESS_KEY,
-                    language: 'ko-KR',
-                },
+            const popularMoviesResponse = await axios.get('https://api.themoviedb.org/3/movie/popular', {
+                params: { api_key: import.meta.env.VITE_TMDB_ACCESS_KEY, language: 'ko-KR' },
             });
 
-            const movieId = request.data.results[Math.floor(Math.random() * request.data.results.length)].id;
+            const randomMovieId = popularMoviesResponse.data.results[Math.floor(Math.random() * popularMoviesResponse.data.results.length)].id;
 
-            const { data: movieDetail } = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, {
-                params: {
-                    api_key: import.meta.env.VITE_TMDB_ACCESS_KEY,
-                    append_to_response: 'videos',
-                    language: 'ko-KR',
-                },
+            const movieDetailResponse = await axios.get(`https://api.themoviedb.org/3/movie/${randomMovieId}`, {
+                params: { api_key: import.meta.env.VITE_TMDB_ACCESS_KEY, language: 'ko-KR' },
             });
-            setMovie(movieDetail);
-            if (movieDetail.videos && movieDetail.videos.results.length > 0) {
-                setVideoKey(movieDetail.videos.results[0].key);
-            }
+
+            setMovie(movieDetailResponse.data);
         } catch (error) {
             console.error('Failed to fetch movie data:', error);
         }
     };
 
-    // Display vote average with two decimal places
     const voteAverage = movie.vote_average ? movie.vote_average.toFixed(2) : '';
 
-    // Add thousand separator to viewersCount
     const viewersCount = movie.popularity ? movie.popularity.toLocaleString() : '';
 
     return (

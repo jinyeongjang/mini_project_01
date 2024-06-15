@@ -5,42 +5,41 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import DraggableMovieCard from './DraggableMovieCard';
 import '../App.css';
 
-const MovieList = () => {
+const MovieCategoryAction = () => {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
-    const [loading, setLoading] = useState(false);
-    const [hasMore, setHasMore] = useState(true);
     const observer = useRef();
 
-    const fetchPopularMovies = async (page) => {
-        setLoading(true);
+    const fetchActionMovies = async (page) => {
         try {
-            const response = await axios.get('movie/popular', { params: { page } });
-            setMovies((prevMovies) => [...prevMovies, ...response.data.results]);
-            setHasMore(response.data.results.length > 0);
-            setLoading(false);
+            const response = await axios.get('discover/movie', {
+                params: {
+                    with_genres: 28,
+                    with_original_language: 'ko',
+                    sort_by: 'popularity.desc',
+                    page,
+                },
+            });
+            const filteredMovies = response.data.results.filter((movie) => movie.poster_path && movie.poster_path !== 'null');
+            setMovies((prevMovies) => [...prevMovies, ...filteredMovies]);
         } catch (error) {
             console.error('TMDB Api키를 찾을 수 없어요.', error);
-            setLoading(false);
         }
     };
 
     useEffect(() => {
-        fetchPopularMovies(page);
+        fetchActionMovies(page);
     }, [page]);
 
-    const lastMovieElementRef = useCallback(
-        (node) => {
-            if (observer.current) observer.current.disconnect();
-            observer.current = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting && hasMore && !loading) {
-                    setPage((prevPage) => prevPage + 1);
-                }
-            });
-            if (node) observer.current.observe(node);
-        },
-        [loading, hasMore]
-    );
+    const lastMovieElementRef = useCallback((node) => {
+        if (observer.current) observer.current.disconnect();
+        observer.current = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                setPage((prevPage) => prevPage + 1);
+            }
+        });
+        if (node) observer.current.observe(node);
+    }, []);
 
     const moveCard = (dragIndex, hoverIndex) => {
         const dragMovie = movies[dragIndex];
@@ -56,10 +55,9 @@ const MovieList = () => {
                 {movies.map((movie, index) => (
                     <DraggableMovieCard key={movie.id} index={index} movie={movie} moveCard={moveCard} ref={index === movies.length - 1 ? lastMovieElementRef : null} />
                 ))}
-                {loading && <p>Loading...</p>}
             </main>
         </DndProvider>
     );
 };
 
-export default MovieList;
+export default MovieCategoryAction;

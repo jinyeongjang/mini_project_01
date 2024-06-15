@@ -4,7 +4,7 @@
 }
 
 .App {
-    background: rgba(31, 33, 44, 0.5); /* 반투명 배경색 */
+    /* background: rgba(31, 33, 44, 0.5); 반투명 배경색 */
     padding: 20px;
     border-radius: 10px;
 }

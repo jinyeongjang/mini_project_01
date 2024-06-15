@@ -1,4 +1,3 @@
-/* 기존 스타일 */
 main {
     margin-top: 20px;
 }
@@ -247,7 +246,7 @@ main {
     }
 }
 
-/* Hide horizontal scrollbar */
+/* 스크롤 바 없애기 */
 body {
     overflow-x: hidden;
 }
